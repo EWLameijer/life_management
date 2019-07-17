@@ -1,0 +1,23 @@
+[
+	{ 
+		"model" : "contacts.ConnectionType",
+		"pk" : 1,
+		"fields" : {
+			"description" : "partner"
+		}
+	},
+	{ 
+		"model" : "contacts.ConnectionType",
+		"pk" : 2,
+		"fields" : {
+			"description" : "child"
+		}
+	},
+	{ 
+		"model" : "contacts.ConnectionType",
+		"pk" : 3,
+		"fields" : {
+			"description" : "parent"
+		}
+	}
+]

@@ -1,0 +1,79 @@
+[
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 1,
+		"fields" : {
+			"description" : "sentEmailTo"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 2,
+		"fields" : {
+			"description" : "receivedEmailFrom"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 3,
+		"fields" : {
+			"description" : "called"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 4,
+		"fields" : {
+			"description" : "wasCalledBy"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 5,
+		"fields" : {
+			"description" : "met"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 6,
+		"fields" : {
+			"description" : "apped"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 7,
+		"fields" : {
+			"description" : "wasAppedBy"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 8,
+		"fields" : {
+			"description" : "weChatted"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 9,
+		"fields" : {
+			"description" : "wasWeChattedBy"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 10,
+		"fields" : {
+			"description" : "messengered"
+		}
+	},
+	{ 
+		"model" : "contacts.ContactType",
+		"pk" : 11,
+		"fields" : {
+			"description" : "wasMessengeredBy"
+		}
+	}
+]
