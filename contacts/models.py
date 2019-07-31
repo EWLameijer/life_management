@@ -13,30 +13,37 @@ class Person(models.Model):
 
 
 class Contact(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    person = models.OneToOneField(Person, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.person.name
 
 
 class ContactType(models.Model):
-    description = models.CharField(max_length=DESCRIPTION_LENGTH)
+    description = models.CharField(max_length=DESCRIPTION_LENGTH, unique=True)
 
     def __str__(self):
         return self.description
 
 
 class ContactMoment(models.Model):
-    name = models.ForeignKey(Contact, on_delete=models.CASCADE)
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
     date = models.DateField()
     type = models.ForeignKey(ContactType, on_delete=models.CASCADE)
+    remarks = models.TextField(blank=True)
 
     def __str__(self):
-        return "{}: {} (on {})".format(self.name, self.type, self.date)
+        return f'{self.contact.person.name}:' + event_and_date(self)
+
+    def event_and_date(self):
+        return f'{self.type} {self.date}'
+
+    class Meta:
+        unique_together = ('contact', 'date')
 
 
 class ConnectionType(models.Model):
-    description = models.CharField(max_length=DESCRIPTION_LENGTH)
+    description = models.CharField(max_length=DESCRIPTION_LENGTH, unique=True)
 
     def __str__(self):
         return self.description
@@ -52,6 +59,9 @@ class Connection(models.Model):
             self.subject.name,
             self.relationship.description,
             self.other_person.name)
+
+    class Meta:
+        unique_together = ('subject', 'other_person')
     
 
 
