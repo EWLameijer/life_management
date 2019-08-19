@@ -11,12 +11,18 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ('name',)
+
 
 class Contact(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.person.name
+
+    class Meta:
+        ordering = ('person__name',)
 
 
 class ContactType(models.Model):
@@ -32,14 +38,20 @@ class ContactMoment(models.Model):
     type = models.ForeignKey(ContactType, on_delete=models.CASCADE)
     remarks = models.TextField(blank=True)
 
+    def __lt__(self, other):
+        return self.date < other.date
+
     def __str__(self):
-        return f'{self.contact.person.name}:' + event_and_date(self)
+        return f'{self.contact.person.name}: ' + self.event_and_date()
 
     def event_and_date(self):
         return f'{self.type} {self.date}'
 
+
+
     class Meta:
         unique_together = ('contact', 'date')
+
 
 
 class ConnectionType(models.Model):
